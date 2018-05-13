@@ -1,3 +1,4 @@
-import UsersTable from './table';
+import UsersTable from './userTable';
+import UserSearch from './userSearch';
 
-export {UsersTable};
+export { UsersTable, UserSearch };

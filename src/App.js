@@ -1,25 +1,48 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
+// import PropTypes from 'prop-types';
+import { createStore } from 'redux'
 import { Container, Menu } from 'semantic-ui-react';
-import { UsersTable } from './components';
+import { UsersTable, UserSearch } from './components';
+import Users from './users';
 
 class App extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: Users,
+      active: 0,
+      term: ''
+    };
+    this.initialData = Users;
+  }
+
+  updateData(config) {
+    this.setState(config);
+  }
+
+
+  render () {
     return (
       <div className="App">
-        <Menu inverted>
-          <Menu.Item name='home'/>
-          <Menu.Item name='messages'/>
-          <Menu.Item name='friends'/>
+        <Menu inverted className="navbar">
+          <Menu.Item name='Burlakov Test App' />
         </Menu>
-        <Container>
-          <UsersTable />
-        </Container>  
+        <Container className="feature_container">
+          <UserSearch
+            term={this.state.term}
+            data={this.initialData}
+            update={this.updateData.bind(this)}
+          />
+        </Container>
+        <Container className="table_container">
+          <UsersTable data={this.state.data}  />
+        </Container>
       </div>
     );
   }
 }
+
+
 
 
 export default App;
