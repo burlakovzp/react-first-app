@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux'
 import { Container, Menu } from 'semantic-ui-react';
 import { UsersTable, UserSearch } from './components';
 import Users from './users';
+
+// const store = createStore(Users);
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: Users,
-      active: 0,
       term: ''
     };
     this.initialData = Users;
@@ -19,7 +20,6 @@ class App extends Component {
   updateData(config) {
     this.setState(config);
   }
-
 
   render () {
     return (
@@ -41,8 +41,6 @@ class App extends Component {
     );
   }
 }
-
-
 
 
 export default App;

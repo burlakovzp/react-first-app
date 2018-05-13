@@ -18,7 +18,6 @@ export default ({ term, data, update }) => {
 
         update({
             data: filter,
-            active: 0,
             term: value
         });
 
